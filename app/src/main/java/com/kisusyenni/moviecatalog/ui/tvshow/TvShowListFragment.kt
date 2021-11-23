@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kisusyenni.moviecatalog.databinding.FragmentTvShowListBinding
 import com.kisusyenni.moviecatalog.utils.TvShowDummyData
@@ -20,7 +21,9 @@ class TvShowListFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
-            val tvShows = TvShowDummyData.generateTvShows()
+            val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[TvShowListViewModel::class.java]
+            val tvShows = viewModel.getTvShows()
+
             val tvShowAdapter = TvShowListAdapter()
             tvShowAdapter.setTvShows(tvShows)
             with(fragmentTvShowListBinding.rvTvShows) {

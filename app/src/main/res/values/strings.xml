@@ -4,6 +4,7 @@
     <string name="movies">Movies</string>
     <string name="tvShows">Tv Shows</string>
     <string name="genres">Genres %s</string>
+    <string name="episodes">%s Episode</string>
     <string name="overview_heading">Overview</string>
     <string name="director_heading">Director</string>
 </resources>
