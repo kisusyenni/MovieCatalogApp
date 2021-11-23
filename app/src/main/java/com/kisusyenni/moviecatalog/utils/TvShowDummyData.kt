@@ -104,16 +104,16 @@ object TvShowDummyData {
         tvShows.add(
             TvShowEntity(
                 "m7",
-                "",
-                "",
-                "",
-                "",
-                "",
-                0,
-                "",
-                "",
-                0,
-                0
+                "Blue Birthday",
+                "The series tells the story of Oh Ha-rin, who travels to the past through mysterious photos left by her first love, Ji Seo-jun. Since they were eight years old, they had been close friends, but he died by suicide on her birthday ten years ago.",
+                "Her first love passed away on her birthday\n",
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ngHe2ZFfr7wypsggD8LlYresOTd.jpg",
+                "Park Dan-hee",
+                83,
+                "Sci-Fi & Fantasy, Drama, Mystery",
+                "2021",
+                1,
+                16
             )
         )
 
