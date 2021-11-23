@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Movie Catalog</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="movies">Movies</string>
     <string name="tvShows">Tv Shows</string>
     <string name="genres">Genres %s</string>

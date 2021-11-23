@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kisusyenni.moviecatalog.databinding.FragmentTvShowListBinding
-import com.kisusyenni.moviecatalog.utils.TvShowDummyData
 
 class TvShowListFragment: Fragment() {
     private lateinit var fragmentTvShowListBinding: FragmentTvShowListBinding
