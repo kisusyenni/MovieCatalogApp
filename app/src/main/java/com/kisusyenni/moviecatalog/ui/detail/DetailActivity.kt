@@ -27,6 +27,7 @@ class DetailActivity : AppCompatActivity() {
         val extras = intent.extras
         if (extras != null) {
             val id = extras.getString(EXTRA_ID)
+            id?.let { viewModel.setSelectedDetail(it) }
             val category = extras.getInt(EXTRA_CATEGORY)
             if (id != null) {
                 if(category == 1) {
