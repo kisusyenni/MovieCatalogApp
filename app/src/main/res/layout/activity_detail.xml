@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:ellipsize="end"
         android:gravity="start"
@@ -69,6 +69,7 @@
         android:id="@+id/quote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="italic"
         tools:text="Quote"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,11 +87,11 @@
         app:layout_constraintTop_toBottomOf="@+id/quote"/>
 
     <TextView
-        android:id="@+id/duration"
+        android:id="@+id/duration_episodes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Duration"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/release_year"
         app:layout_constraintStart_toEndOf="@+id/release_year"
