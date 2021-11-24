@@ -98,15 +98,15 @@ object MovieDummyData {
         movies.add(
             MovieEntity(
                 "m7",
-                "",
-                "",
-                "",
-                "",
-                "",
-                0,
-                "",
-                "",
-                ""
+                "Clifford the Big Red Dog",
+                "As Emily struggles to fit in at home and at school, she discovers a small red puppy who is destined to become her best friend. When Clifford magically undergoes one heck of a growth spurt, becomes a gigantic dog and attracts the attention of a genetics company, Emily and her Uncle Casey have to fight the forces of greed as they go on the run across New York City. Along the way, Clifford affects the lives of everyone around him and teaches Emily and her uncle the true meaning of acceptance and unconditional love.",
+                "Adventure has never been bigger.",
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/tY5jylU5wWaqRs8fmwkJBNzoyXB.jpg",
+                "Walt Becker",
+                78,
+                "Animation, Comedy, Family\n",
+                "2021",
+                "1h 37m"
             )
         )
 
