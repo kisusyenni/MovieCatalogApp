@@ -4,15 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14791666666666667" />
+        <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/drawable/ic_baseline_movie_24.xml" value="0.14791666666666667" />
         <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14791666666666667" />
         <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/drawable/ic_launcher_foreground_2.xml" value="0.14791666666666667" />
+        <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/drawable/splash_brand_logo.xml" value="0.264" />
         <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/layout/activity_detail.xml" value="0.264" />
         <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/layout/activity_detail_movie.xml" value="0.13020833333333334" />
         <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/layout/activity_home.xml" value="0.13020833333333334" />
+        <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/layout/activity_splash.xml" value="0.13177083333333334" />
         <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/layout/fragment_movie_list.xml" value="0.15416666666666667" />
         <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/layout/fragment_tv_show_list.xml" value="0.15416666666666667" />
         <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/layout/items_movie.xml" value="0.536" />
         <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/layout/items_tv_show.xml" value="0.4" />
+        <entry key="..\:/Exercise/Android/MovieCatalog/app/src/main/res/layout/splash_brand_logo.xml" value="0.13177083333333334" />
       </map>
     </option>
   </component>
