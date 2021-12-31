@@ -6,5 +6,5 @@
     <string name="episodes">%s Episode</string>
     <string name="minutes">%s Minutes</string>
     <string name="overview_heading">Overview</string>
-    <string name="director_heading">Director</string>
+    <string name="production_heading">Production</string>
 </resources>

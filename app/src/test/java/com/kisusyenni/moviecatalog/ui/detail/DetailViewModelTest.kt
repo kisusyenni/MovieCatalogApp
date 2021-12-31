@@ -61,7 +61,7 @@ class DetailViewModelTest {
         assertEquals(dummyMovie.rating, detailMovie.rating)
         assertEquals(dummyMovie.genres, detailMovie.genres)
         assertEquals(dummyMovie.releaseYear, detailMovie.releaseYear)
-        assertEquals(dummyMovie.durationSeasons, detailMovie.durationSeasons)
+        assertEquals(dummyMovie.durationEpisodes, detailMovie.durationEpisodes)
 
         viewModel.getDetail().observeForever(observer)
         verify(observer).onChanged(dummyMovie)
@@ -92,7 +92,7 @@ class DetailViewModelTest {
         assertEquals(dummyTvShow.rating, detailTvShow.rating)
         assertEquals(dummyTvShow.genres, detailTvShow.genres)
         assertEquals(dummyTvShow.releaseYear, detailTvShow.releaseYear)
-        assertEquals(dummyTvShow.durationSeasons, detailTvShow.durationSeasons)
+        assertEquals(dummyTvShow.durationEpisodes, detailTvShow.durationEpisodes)
 
         viewModel.getDetail().observeForever(observer)
         verify(observer).onChanged(dummyTvShow)

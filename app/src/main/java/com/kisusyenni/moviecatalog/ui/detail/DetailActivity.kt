@@ -48,15 +48,15 @@ class DetailActivity : AppCompatActivity() {
         activityDetailBinding.textTitle.text = detail.title
         activityDetailBinding.releaseYear.text = detail.releaseYear
         activityDetailBinding.durationEpisodes.text = when(categoryDetail) {
-            "movie" -> resources.getString(R.string.minutes, detail.durationSeasons)
-            "tvShow" -> resources.getString(R.string.episodes, detail.durationSeasons)
+            "movie" -> resources.getString(R.string.minutes, detail.durationEpisodes)
+            "tvShow" -> resources.getString(R.string.episodes, detail.durationEpisodes)
             else -> ""
         }
         activityDetailBinding.rbItemRating.rating = detail.rating
         activityDetailBinding.genres.text = resources.getString(R.string.genres, detail.genres)
         activityDetailBinding.quote.text = detail.quote
         activityDetailBinding.overviewContent.text = detail.overview
-        activityDetailBinding.directorContent.text = detail.production
+        activityDetailBinding.productionContent.text = detail.production
         Glide.with(this@DetailActivity)
             .load(detail.image)
             .into(activityDetailBinding.imagePoster)

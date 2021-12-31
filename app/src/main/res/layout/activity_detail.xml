@@ -112,23 +112,23 @@
             app:layout_constraintTop_toBottomOf="@+id/overview_heading" />
 
         <TextView
-            android:id="@+id/director_heading"
+            android:id="@+id/production_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/director_heading"
+            android:text="@string/production_heading"
             android:layout_marginTop="16dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/overview_content" />
 
         <TextView
-            android:id="@+id/director_content"
+            android:id="@+id/production_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/director_heading"
+            android:text="@string/production_heading"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/director_heading"
-            app:layout_constraintTop_toBottomOf="@+id/director_heading" />
+            app:layout_constraintStart_toStartOf="@+id/production_heading"
+            app:layout_constraintTop_toBottomOf="@+id/production_heading" />
 
         <ProgressBar
             android:id="@+id/progress_bar"

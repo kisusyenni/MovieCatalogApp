@@ -10,5 +10,5 @@ data class DetailEntity(
     var rating: Float,
     var genres: String?,
     var releaseYear: String?,
-    var durationSeasons: String?
+    var durationEpisodes: String?
 )

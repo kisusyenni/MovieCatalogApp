@@ -47,24 +47,8 @@ class HomeActivityTest {
         onView(withId(R.id.rv_movie_list)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
         onView(withId(R.id.text_title)).check(matches(withText(dummyDetailMovie.title)))
-//
-//        onView(withId(R.id.overview_content)).check(matches(isDisplayed()))
-//        onView(withId(R.id.overview_content)).check(matches(withText(dummyDetailMovie.overview)))
-//
-//        onView(withId(R.id.quote)).check(matches(isDisplayed()))
-//        onView(withId(R.id.quote)).check(matches(withText(dummyDetailMovie.quote)))
-//
-//        onView(withId(R.id.director_content)).check(matches(isDisplayed()))
-//        onView(withId(R.id.director_content)).check(matches(withText(dummyDetailMovie.production)))
-//
-//        onView(withId(R.id.genres)).check(matches(isDisplayed()))
-//        onView(withId(R.id.genres)).check(matches(withText("Genres: ${dummyDetailMovie.genres}")))
-
         onView(withId(R.id.release_year)).check(matches(isDisplayed()))
         onView(withId(R.id.release_year)).check(matches(withText(dummyDetailMovie.releaseYear)))
-//
-//        onView(withId(R.id.duration_episodes)).check(matches(isDisplayed()))
-//        onView(withId(R.id.duration_episodes)).check(matches(withText(dummyDetailMovie.durationSeasons)))
     }
 
     @Test
@@ -74,23 +58,8 @@ class HomeActivityTest {
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
         onView(withId(R.id.text_title)).check(matches(withText(dummyDetailTvShows.title)))
 
-//        onView(withId(R.id.overview_content)).check(matches(isDisplayed()))
-//        onView(withId(R.id.overview_content)).check(matches(withText(dummyDetailTvShows.overview)))
-
-//        onView(withId(R.id.quote)).check(matches(isDisplayed()))
-//        onView(withId(R.id.quote)).check(matches(withText(dummyDetailTvShows.quote)))
-
-//        onView(withId(R.id.director_content)).check(matches(isDisplayed()))
-//        onView(withId(R.id.director_content)).check(matches(withText(dummyDetailTvShows.production)))
-//
-//        onView(withId(R.id.genres)).check(matches(isDisplayed()))
-//        onView(withId(R.id.genres)).check(matches(withText("Genres: ${dummyDetailTvShows.genres}")))
-
         onView(withId(R.id.release_year)).check(matches(isDisplayed()))
         onView(withId(R.id.release_year)).check(matches(withText(dummyDetailTvShows.releaseYear)))
-
-//        onView(withId(R.id.duration_episodes)).check(matches(isDisplayed()))
-//        onView(withId(R.id.duration_episodes)).check(matches(withText("${dummyDetailTvShows.durationSeasons} Episode")))
     }
 
     @Test
