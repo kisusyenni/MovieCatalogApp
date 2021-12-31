@@ -29,7 +29,7 @@ data class MovieDetailResponse(
 	val popularity: Double? = null,
 
 	@field:SerializedName("production_countries")
-	val productionCountries: List<ProductionCountriesItem?>? = null,
+	val productionCountries: List<MovieProductionCountriesItem?>? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,
@@ -56,7 +56,7 @@ data class MovieDetailResponse(
 	val spokenLanguages: List<MovieSpokenLanguagesItem?>? = null,
 
 	@field:SerializedName("production_companies")
-	val productionCompanies: List<ProductionCompaniesItem?>? = null,
+	val productionCompanies: List<MovieProductionCompaniesItem?>? = null,
 
 	@field:SerializedName("release_date")
 	val releaseDate: String? = null,
@@ -116,7 +116,7 @@ data class BelongsToCollection(
 	val posterPath: String? = null
 )
 
-data class ProductionCompaniesItem(
+data class MovieProductionCompaniesItem(
 
 	@field:SerializedName("logo_path")
 	val logoPath: String? = null,
@@ -131,7 +131,7 @@ data class ProductionCompaniesItem(
 	val originCountry: String? = null
 )
 
-data class ProductionCountriesItem(
+data class MovieProductionCountriesItem(
 
 	@field:SerializedName("iso_3166_1")
 	val iso31661: String? = null,

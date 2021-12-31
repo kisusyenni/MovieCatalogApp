@@ -26,7 +26,7 @@ data class TvShowDetailResponse(
 	val popularity: Double? = null,
 
 	@field:SerializedName("production_countries")
-	val productionCountries: List<Any?>? = null,
+	val productionCountries: List<TvShowProductionCountriesItem?>? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,
@@ -62,10 +62,10 @@ data class TvShowDetailResponse(
 	val originCountry: List<String?>? = null,
 
 	@field:SerializedName("spoken_languages")
-	val spokenLanguages: List<SpokenLanguagesItem?>? = null,
+	val spokenLanguages: List<TvShowSpokenLanguagesItem?>? = null,
 
 	@field:SerializedName("production_companies")
-	val productionCompanies: List<Any?>? = null,
+	val productionCompanies: List<TvShowProductionCompaniesItem?>? = null,
 
 	@field:SerializedName("original_name")
 	val originalName: String? = null,
@@ -98,37 +98,31 @@ data class TvShowDetailResponse(
 	val status: String? = null
 )
 
-data class SeasonsItem(
-
-	@field:SerializedName("air_date")
-	val airDate: String? = null,
-
-	@field:SerializedName("overview")
-	val overview: String? = null,
-
-	@field:SerializedName("episode_count")
-	val episodeCount: Int? = null,
+data class TvShowSpokenLanguagesItem(
 
 	@field:SerializedName("name")
 	val name: String? = null,
 
-	@field:SerializedName("season_number")
-	val seasonNumber: Int? = null,
+	@field:SerializedName("iso_639_1")
+	val iso6391: String? = null,
+
+	@field:SerializedName("english_name")
+	val englishName: String? = null
+)
+
+data class NetworksItem(
+
+	@field:SerializedName("logo_path")
+	val logoPath: String? = null,
+
+	@field:SerializedName("name")
+	val name: String? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,
 
-	@field:SerializedName("poster_path")
-	val posterPath: Any? = null
-)
-
-data class GenresItem(
-
-	@field:SerializedName("name")
-	val name: String? = null,
-
-	@field:SerializedName("id")
-	val id: Int? = null
+	@field:SerializedName("origin_country")
+	val originCountry: String? = null
 )
 
 data class LastEpisodeToAir(
@@ -158,40 +152,37 @@ data class LastEpisodeToAir(
 	val id: Int? = null,
 
 	@field:SerializedName("still_path")
-	val stillPath: Any? = null,
+	val stillPath: String? = null,
 
 	@field:SerializedName("vote_count")
 	val voteCount: Int? = null
 )
 
-data class CreatedByItem(
+data class SeasonsItem(
 
-	@field:SerializedName("credit_id")
-	val creditId: String? = null,
+	@field:SerializedName("air_date")
+	val airDate: String? = null,
+
+	@field:SerializedName("overview")
+	val overview: String? = null,
+
+	@field:SerializedName("episode_count")
+	val episodeCount: Int? = null,
 
 	@field:SerializedName("name")
 	val name: String? = null,
 
-	@field:SerializedName("profile_path")
-	val profilePath: Any? = null,
+	@field:SerializedName("season_number")
+	val seasonNumber: Int? = null,
 
 	@field:SerializedName("id")
-	val id: Int? = null
+	val id: Int? = null,
+
+	@field:SerializedName("poster_path")
+	val posterPath: String? = null
 )
 
-data class SpokenLanguagesItem(
-
-	@field:SerializedName("name")
-	val name: String? = null,
-
-	@field:SerializedName("iso_639_1")
-	val iso6391: String? = null,
-
-	@field:SerializedName("english_name")
-	val englishName: String? = null
-)
-
-data class NetworksItem(
+data class TvShowProductionCompaniesItem(
 
 	@field:SerializedName("logo_path")
 	val logoPath: String? = null,
@@ -204,4 +195,40 @@ data class NetworksItem(
 
 	@field:SerializedName("origin_country")
 	val originCountry: String? = null
+)
+
+data class TvShowProductionCountriesItem(
+
+	@field:SerializedName("iso_3166_1")
+	val iso31661: String? = null,
+
+	@field:SerializedName("name")
+	val name: String? = null
+)
+
+data class GenresItem(
+
+	@field:SerializedName("name")
+	val name: String? = null,
+
+	@field:SerializedName("id")
+	val id: Int? = null
+)
+
+data class CreatedByItem(
+
+	@field:SerializedName("gender")
+	val gender: Int? = null,
+
+	@field:SerializedName("credit_id")
+	val creditId: String? = null,
+
+	@field:SerializedName("name")
+	val name: String? = null,
+
+	@field:SerializedName("profile_path")
+	val profilePath: String? = null,
+
+	@field:SerializedName("id")
+	val id: Int? = null
 )
