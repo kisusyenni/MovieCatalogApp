@@ -4,10 +4,14 @@ import androidx.test.espresso.IdlingResource
 import androidx.test.espresso.idling.CountingIdlingResource
 
 object EspressoIdlingResource {
-    private const val RESOURCE: String = "GLOBAL"
-    private val espressoIdlingResource = CountingIdlingResource(RESOURCE)
+    private const val RESOURCE = "GLOBAL"
+    val idlingResource = CountingIdlingResource(RESOURCE)
 
-    fun increment() = espressoIdlingResource.increment()
-    fun decrement() = espressoIdlingResource.decrement()
-    fun getEspressoIdlingResource(): IdlingResource = espressoIdlingResource
+    fun increment() {
+        idlingResource.increment()
+    }
+
+    fun decrement() {
+        idlingResource.decrement()
+    }
 }

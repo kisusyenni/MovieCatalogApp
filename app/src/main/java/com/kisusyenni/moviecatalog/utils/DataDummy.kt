@@ -8,66 +8,66 @@ object DataDummy {
     fun getMovies(): List<ListEntity> {
         return listOf(
             ListEntity(
-                566525,
-                "Shang-Chi and the Legend of the Ten Rings",
-                "2021",
-                7.9F,
-                "/1BIoJGKbXjdFDAqUEiA2VHqkK1Z.jpg"
+                634649,
+                "Spider-Man: No Way Home",
+                "2021-12-15",
+                4.2F,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
             ),
             ListEntity(
                 635302,
                 "Demon Slayer -Kimetsu no Yaiba- The Movie: Mugen Train",
                 "2020",
-                8.4F,
-                "/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg",
+                4.2F,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg",
             ),
             ListEntity(
                 1930,
                 "The Amazing Spider-Man",
                 "2012",
-                5.3F,
-                "/moNJa86FgDYy8SWeDym2gnsLLMa.jpg"
+                3.3F,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/moNJa86FgDYy8SWeDym2gnsLLMa.jpg"
             )
         )
     }
 
     fun getDetailMovie(): DetailEntity {
         return DetailEntity(
-            566525,
-            "Shang-Chi and the Legend of the Ten Rings",
-            "Shang-Chi must confront the past he thought he left behind when he is drawn into the web of the mysterious Ten Rings organization.",
-            "You can't outrun your destiny.",
-            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1BIoJGKbXjdFDAqUEiA2VHqkK1Z.jpg",
-            "Destin Daniel Cretton",
-            7.9F,
-            "Action, Adventure, Fantasy",
-            "2021",
-            "132"
+            634649,
+            "Spider-Man: No Way Home",
+            "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.",
+            "The Multiverse unleashed.",
+            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+            "Marvel Studios, Pascal Pictures, Columbia Pictures",
+            4.2F,
+            "Action, Adventure, Science Fiction",
+            "2021-12-15",
+            "148"
         )
     }
 
     fun getTvShows(): List<ListEntity> {
         return listOf(
             ListEntity(
+                84958,
+                "Hawkeye",
+                "2021-11-24",
+                4.25F,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pqzjCxPVc9TkVgGRWeAoMmyqkZV.jpg"
+            ),
+            ListEntity(
                 93405,
                 "Squid Game",
                 "2021",
                 8.1F,
-                "/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg"
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg"
             ),
             ListEntity(
                 65650,
                 "The Good Doctor",
                 "2017",
                 6.2F,
-                "/cXUqtadGsIcZDWUTrfnbDjAy8eN.jpg"
-            ),
-            ListEntity(
-                1416,
-                "Grey's Anatomy",
-                "2005",
-                8.2F,
-                "/zPIug5giU8oug6Xes5K1sTfQJxY.jpg"
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/cXUqtadGsIcZDWUTrfnbDjAy8eN.jpg"
             )
         )
     }
@@ -75,15 +75,15 @@ object DataDummy {
     fun getDetailTvShow(): DetailEntity {
         return DetailEntity(
             84958,
-            "Loki",
-            "After stealing the Tesseract during the events of “Avengers: Endgame,” an alternate version of Loki is brought to the mysterious Time Variance Authority, a bureaucratic organization that exists outside of time and space and monitors the timeline. They give Loki a choice: face being erased from existence due to being a “time variant” or help fix the timeline and stop a greater threat.",
-            "Loki's time has come.",
-            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
-            "Michael Waldron",
-            82.0F,
-            "Drama, Sci-Fi & Fantasy",
-            "2021",
-            "1",
+            "Hawkeye",
+            "Former Avenger Clint Barton has a seemingly simple mission: get back to his family for Christmas. Possible? Maybe with the help of Kate Bishop, a 22-year-old archer with dreams of becoming a superhero. The two are forced to work together when a presence from Barton’s past threatens to derail far more than the festive spirit.",
+            "This holiday season, the best gifts come with a bow.",
+            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pqzjCxPVc9TkVgGRWeAoMmyqkZV.jpg",
+            "Disney+",
+            4.25F,
+            "Action & Adventure, Drama",
+            "2021-11-24",
+            "6 Episode",
         )
     }
 
