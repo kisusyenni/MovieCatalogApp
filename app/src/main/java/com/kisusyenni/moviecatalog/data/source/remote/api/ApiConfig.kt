@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 const val API_KEY = "b1e5ec24c256814b677dbbf22efafb4c"
 const val BASE_URL = "https://api.themoviedb.org/3/"
-const val POSTER_BASE_URL = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2"
+const val POSTER_BASE_URL = "https://www.themoviedb.org/t/p/w500"
 
 class ApiConfig {
     companion object{

@@ -1,38 +1,29 @@
 package com.kisusyenni.moviecatalog.ui.detail
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.kisusyenni.moviecatalog.data.MovieEntity
-import com.kisusyenni.moviecatalog.data.TvShowEntity
-import com.kisusyenni.moviecatalog.utils.MovieDummyData
-import com.kisusyenni.moviecatalog.utils.TvShowDummyData
+import com.kisusyenni.moviecatalog.data.source.MovieCatalogRepository
+import com.kisusyenni.moviecatalog.data.source.local.entity.DetailEntity
 
-class DetailViewModel: ViewModel() {
-    private lateinit var detailId: String
-
-    fun setSelectedDetail(detailId: String) {
-        this.detailId = detailId
+class DetailViewModel(private val repository: MovieCatalogRepository): ViewModel() {
+    companion object {
+        const val MOVIE = "movie"
+        const val TV_SHOW = "tvShow"
     }
 
-    fun getMovieDetail(): MovieEntity {
-        lateinit var detail: MovieEntity
-        val movieEntities = MovieDummyData.generateMovie()
-        for (movie in movieEntities) {
-            if (movie.movieId == detailId) {
-                detail = movie
+    private lateinit var detailData: LiveData<DetailEntity>
+
+    fun setDetail(id: String, category: String) {
+        when (category) {
+            MOVIE -> {
+                detailData = repository.getDetailMovie(id)
+            }
+
+            TV_SHOW -> {
+                detailData = repository.getDetailTvShow(id)
             }
         }
-        return detail
     }
 
-    fun getTvShowDetail(): TvShowEntity {
-        lateinit var detail: TvShowEntity
-        val tvShowEntities = TvShowDummyData.generateTvShows()
-        for (tvShow in tvShowEntities) {
-            if (tvShow.tvShowId == detailId) {
-                detail = tvShow
-            }
-        }
-        return detail
-    }
-
+    fun getDetail() = detailData
 }

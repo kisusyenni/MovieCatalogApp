@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.kisusyenni.moviecatalog.databinding.FragmentMovieListBinding
+import com.kisusyenni.moviecatalog.viewmodel.ViewModelFactory
 
 class MovieListFragment : Fragment() {
 
@@ -27,32 +28,28 @@ class MovieListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val progressBar = fragmentMovieListBinding.moviesProgressBar
+        progressBar.isVisible = true
         if (activity != null) {
-            val viewModel = ViewModelProvider(
-                this,
-                ViewModelProvider.NewInstanceFactory()
-            )[MovieListViewModel::class.java]
+            val factory = ViewModelFactory.getInstance()
+            val viewModel = ViewModelProvider(this, factory)[MovieListViewModel::class.java]
             val movieAdapter = MovieListAdapter()
 
-            viewModel.movieList.observe(viewLifecycleOwner, { movies ->
-
+            // observe movieList
+            viewModel.getMovies().observe(viewLifecycleOwner, { movies ->
+                progressBar.isVisible = false
                 movieAdapter.setMovies(movies)
                 with(fragmentMovieListBinding.rvMovieList) {
-                    if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                        layoutManager = GridLayoutManager(context, 4)
+                    layoutManager = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                        GridLayoutManager(context, 4)
                     } else {
-                        layoutManager = GridLayoutManager(context, 3)
+                        GridLayoutManager(context, 3)
                     }
                     setHasFixedSize(true)
                     adapter = movieAdapter
                 }
 
             })
-            viewModel.isLoading.observe(viewLifecycleOwner, {
-                fragmentMovieListBinding.progressBar.visibility =
-                    if (it) View.VISIBLE else View.GONE
-            })
-
         }
     }
 }

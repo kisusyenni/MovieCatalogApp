@@ -34,6 +34,7 @@ ext {
     espressoVersion = '3.4.0'
     androidTestVersion = '1.4.0'
     androidXTestVersion = '1.4.0'
+    idlingResVersion = '3.3.0'
 
     archLifecycleVersion = '2.4.0'
 }

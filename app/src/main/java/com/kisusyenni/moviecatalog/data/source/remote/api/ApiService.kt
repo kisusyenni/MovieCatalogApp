@@ -8,20 +8,16 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
-    @GET("movie/popular")
-    fun getMovies(
-        @Query("page") page:Int
-    ): Call<MovieResponse>
+    @GET("discover/movie")
+    fun getMovies(): Call<MovieResponse>
 
     @GET("movie/{movie_id}")
     fun getMovieDetail(
         @Path("movie_id") movie_id: String
     ): Call<MovieDetailResponse>
 
-    @GET("tv/popular")
-    fun getTvShows(
-        @Query("page") page:Int
-    ): Call<TvShowResponse>
+    @GET("discover/tv")
+    fun getTvShows(): Call<TvShowResponse>
 
     @GET("tv/{tv_id}")
     fun getTvShowDetail(

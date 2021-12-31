@@ -5,16 +5,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.kisusyenni.moviecatalog.R
-import com.kisusyenni.moviecatalog.data.TvShowEntity
+import com.kisusyenni.moviecatalog.data.source.local.entity.ListEntity
 import com.kisusyenni.moviecatalog.databinding.ItemsMovieBinding
 import com.kisusyenni.moviecatalog.ui.detail.DetailActivity
 
 class TvShowListAdapter: RecyclerView.Adapter<TvShowListAdapter.MovieViewHolder>() {
 
-    private var listTvShows = ArrayList<TvShowEntity>()
+    private var listTvShows = ArrayList<ListEntity>()
 
-    fun setTvShows(tvShows: List<TvShowEntity>?) {
+    fun setTvShows(tvShows: List<ListEntity>?) {
         if (tvShows == null) return
         this.listTvShows.clear()
         this.listTvShows.addAll(tvShows)
@@ -33,15 +32,17 @@ class TvShowListAdapter: RecyclerView.Adapter<TvShowListAdapter.MovieViewHolder>
     override fun getItemCount(): Int = listTvShows.size
 
     class MovieViewHolder(private val binding: ItemsMovieBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(tvShow: TvShowEntity) {
+        fun bind(tvShow: ListEntity) {
             with(binding) {
                 tvItemTitle.text = tvShow.title
-                tvItemGenres.text = itemView.resources.getString(R.string.genres, tvShow.genres)
-                rbItemRating.rating = (tvShow.rating/20).toFloat()
+                tvItemReleased.text = tvShow.releasedDate
+                tvShow.rating?.let{
+                    rbItemRating.rating = tvShow.rating
+                }
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.EXTRA_ID, tvShow.tvShowId)
-                    intent.putExtra(DetailActivity.EXTRA_CATEGORY, 2)
+                    intent.putExtra(DetailActivity.EXTRA_ID, tvShow.Id.toString())
+                    intent.putExtra(DetailActivity.EXTRA_CATEGORY, "tvShow")
                     itemView.context.startActivity(intent)
                 }
                 Glide.with(itemView.context)
