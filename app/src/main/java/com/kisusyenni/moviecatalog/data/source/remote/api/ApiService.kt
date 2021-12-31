@@ -5,7 +5,8 @@ import com.kisusyenni.moviecatalog.data.source.remote.response.MovieResponse
 import com.kisusyenni.moviecatalog.data.source.remote.response.TvShowDetailResponse
 import com.kisusyenni.moviecatalog.data.source.remote.response.TvShowResponse
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiService {
     @GET("discover/movie")

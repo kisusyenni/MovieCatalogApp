@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.kisusyenni.moviecatalog.data.source.local.entity.DetailEntity
 import com.kisusyenni.moviecatalog.data.source.local.entity.ListEntity
-import com.kisusyenni.moviecatalog.data.source.local.entity.MovieEntity
-import com.kisusyenni.moviecatalog.data.source.local.entity.TvShowEntity
 import com.kisusyenni.moviecatalog.data.source.remote.RemoteDataSource
 import com.kisusyenni.moviecatalog.data.source.remote.api.POSTER_BASE_URL
 import com.kisusyenni.moviecatalog.data.source.remote.response.MovieDetailResponse

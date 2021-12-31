@@ -8,15 +8,11 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.kisusyenni.moviecatalog.R
 import com.kisusyenni.moviecatalog.utils.DataDummy
 import com.kisusyenni.moviecatalog.utils.EspressoIdlingResource
-import com.kisusyenni.moviecatalog.utils.MovieDummyData
-import com.kisusyenni.moviecatalog.utils.TvShowDummyData
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 
 class HomeActivityTest {
