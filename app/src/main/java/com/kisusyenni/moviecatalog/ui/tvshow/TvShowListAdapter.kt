@@ -1,22 +1,26 @@
 package com.kisusyenni.moviecatalog.ui.tvshow
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kisusyenni.moviecatalog.data.source.local.entity.ListEntity
 import com.kisusyenni.moviecatalog.databinding.ItemsMovieBinding
-import com.kisusyenni.moviecatalog.ui.detail.DetailActivity
 
 class TvShowListAdapter: RecyclerView.Adapter<TvShowListAdapter.MovieViewHolder>() {
 
     private var listTvShows = ArrayList<ListEntity>()
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
     fun setTvShows(tvShows: List<ListEntity>?) {
         if (tvShows == null) return
         this.listTvShows.clear()
         this.listTvShows.addAll(tvShows)
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -31,7 +35,7 @@ class TvShowListAdapter: RecyclerView.Adapter<TvShowListAdapter.MovieViewHolder>
 
     override fun getItemCount(): Int = listTvShows.size
 
-    class MovieViewHolder(private val binding: ItemsMovieBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MovieViewHolder(private val binding: ItemsMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(tvShow: ListEntity) {
             with(binding) {
                 tvItemTitle.text = tvShow.title
@@ -39,16 +43,15 @@ class TvShowListAdapter: RecyclerView.Adapter<TvShowListAdapter.MovieViewHolder>
                 tvShow.rating?.let{
                     rbItemRating.rating = tvShow.rating
                 }
-                itemView.setOnClickListener {
-                    val intent = Intent(itemView.context, DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.EXTRA_ID, tvShow.Id.toString())
-                    intent.putExtra(DetailActivity.EXTRA_CATEGORY, "tvShow")
-                    itemView.context.startActivity(intent)
-                }
                 Glide.with(itemView.context)
                     .load(tvShow.image)
                     .into(imgPoster)
+                itemView.setOnClickListener {onItemClickCallback.onItemClicked(tvShow.Id.toString())}
             }
         }
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(id: String)
     }
 }

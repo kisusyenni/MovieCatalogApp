@@ -13,11 +13,6 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var activityDetailBinding: ActivityDetailBinding
     private lateinit var categoryDetail: String
 
-    companion object {
-        const val EXTRA_ID = "extra_id"
-        const val EXTRA_CATEGORY = "extra_category"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityDetailBinding = ActivityDetailBinding.inflate(layoutInflater)
@@ -60,5 +55,10 @@ class DetailActivity : AppCompatActivity() {
         Glide.with(this@DetailActivity)
             .load(detail.image)
             .into(activityDetailBinding.imagePoster)
+    }
+
+    companion object {
+        const val EXTRA_ID = "extra_id"
+        const val EXTRA_CATEGORY = "extra_category"
     }
 }

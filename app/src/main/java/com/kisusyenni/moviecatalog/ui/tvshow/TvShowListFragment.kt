@@ -1,5 +1,6 @@
 package com.kisusyenni.moviecatalog.ui.tvshow
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kisusyenni.moviecatalog.databinding.FragmentTvShowListBinding
+import com.kisusyenni.moviecatalog.ui.detail.DetailActivity
 import com.kisusyenni.moviecatalog.viewmodel.ViewModelFactory
 
-class TvShowListFragment: Fragment() {
-    private lateinit var fragmentTvShowListBinding: FragmentTvShowListBinding
+class TvShowListFragment: Fragment(), TvShowListAdapter.OnItemClickCallback {
+    private var _fragmentTvShowListBinding: FragmentTvShowListBinding? = null
+    private val fragmentTvShowListBinding get() = _fragmentTvShowListBinding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        fragmentTvShowListBinding = FragmentTvShowListBinding.inflate(layoutInflater, container, false)
+        _fragmentTvShowListBinding = FragmentTvShowListBinding.inflate(layoutInflater, container, false)
         return fragmentTvShowListBinding.root
     }
 
@@ -33,6 +36,7 @@ class TvShowListFragment: Fragment() {
 
                 progressBar.isVisible = false
                 tvShowAdapter.setTvShows(tvShows)
+                tvShowAdapter.setOnItemClickCallback(this)
                 with(fragmentTvShowListBinding.rvTvShows) {
                     layoutManager = if (resources.configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) {
                         GridLayoutManager(context, 4)
@@ -44,5 +48,17 @@ class TvShowListFragment: Fragment() {
                 }
             })
         }
+    }
+
+    override fun onItemClicked(id: String) {
+        val intent = Intent(context, DetailActivity::class.java)
+        intent.putExtra(DetailActivity.EXTRA_ID, id)
+        intent.putExtra(DetailActivity.EXTRA_CATEGORY, "tvShow")
+        context?.startActivity(intent)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _fragmentTvShowListBinding = null
     }
 }
