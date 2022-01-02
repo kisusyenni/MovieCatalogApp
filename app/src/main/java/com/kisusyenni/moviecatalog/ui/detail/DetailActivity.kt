@@ -47,11 +47,13 @@ class DetailActivity : AppCompatActivity() {
             "tvShow" -> resources.getString(R.string.episodes, detail.durationEpisodes)
             else -> ""
         }
-        activityDetailBinding.rbItemRating.rating = detail.rating
+        activityDetailBinding.rbDetailRating.rating = detail.rating
+        activityDetailBinding.rbDetailRating.contentDescription = detail.rating.toString()
         activityDetailBinding.genres.text = resources.getString(R.string.genres, detail.genres)
         activityDetailBinding.quote.text = detail.quote
         activityDetailBinding.overviewContent.text = detail.overview
         activityDetailBinding.productionContent.text = detail.production
+        activityDetailBinding.imagePoster.contentDescription = detail.image
         Glide.with(this@DetailActivity)
             .load(detail.image)
             .into(activityDetailBinding.imagePoster)

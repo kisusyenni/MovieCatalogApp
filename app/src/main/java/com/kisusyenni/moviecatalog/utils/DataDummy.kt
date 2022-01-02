@@ -37,7 +37,7 @@ object DataDummy {
             "Spider-Man: No Way Home",
             "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.",
             "The Multiverse unleashed.",
-            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+            "https://www.themoviedb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
             "Marvel Studios, Pascal Pictures, Columbia Pictures",
             4.2F,
             "Action, Adventure, Science Fiction",
@@ -78,12 +78,12 @@ object DataDummy {
             "Hawkeye",
             "Former Avenger Clint Barton has a seemingly simple mission: get back to his family for Christmas. Possible? Maybe with the help of Kate Bishop, a 22-year-old archer with dreams of becoming a superhero. The two are forced to work together when a presence from Barton’s past threatens to derail far more than the festive spirit.",
             "This holiday season, the best gifts come with a bow.",
-            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pqzjCxPVc9TkVgGRWeAoMmyqkZV.jpg",
+            "https://www.themoviedb.org/t/p/w500/pqzjCxPVc9TkVgGRWeAoMmyqkZV.jpg",
             "Disney+",
             4.25F,
             "Action & Adventure, Drama",
             "2021-11-24",
-            "6 Episode",
+            "6",
         )
     }
 

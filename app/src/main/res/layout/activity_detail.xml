@@ -18,9 +18,9 @@
             android:layout_width="150dp"
             android:layout_height="220dp"
             android:src="@color/purple_200"
+            android:contentDescription="@string/detail_image_content_description"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_title"
@@ -58,15 +58,16 @@
             android:gravity="start"
             android:maxLines="3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/rb_item_rating"
-            app:layout_constraintTop_toBottomOf="@+id/rb_item_rating" />
+            app:layout_constraintStart_toStartOf="@+id/rb_detail_rating"
+            app:layout_constraintTop_toBottomOf="@+id/rb_detail_rating" />
 
         <RatingBar
-            android:id="@+id/rb_item_rating"
+            android:id="@+id/rb_detail_rating"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:contentDescription=""
             app:layout_constraintStart_toStartOf="@+id/release_year"
             app:layout_constraintTop_toBottomOf="@+id/release_year" />
 
