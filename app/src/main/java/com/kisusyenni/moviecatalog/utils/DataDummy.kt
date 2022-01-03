@@ -74,16 +74,16 @@ object DataDummy {
 
     fun getDetailTvShow(): DetailEntity {
         return DetailEntity(
-            84958,
-            "Hawkeye",
-            "Former Avenger Clint Barton has a seemingly simple mission: get back to his family for Christmas. Possible? Maybe with the help of Kate Bishop, a 22-year-old archer with dreams of becoming a superhero. The two are forced to work together when a presence from Barton’s past threatens to derail far more than the festive spirit.",
-            "This holiday season, the best gifts come with a bow.",
-            "https://www.themoviedb.org/t/p/w500/pqzjCxPVc9TkVgGRWeAoMmyqkZV.jpg",
-            "Disney+",
-            4.25F,
+            77169,
+            "Cobra Kai",
+            "This Karate Kid sequel series picks up 30 years after the events of the 1984 All Valley Karate Tournament and finds Johnny Lawrence on the hunt for redemption by reopening the infamous Cobra Kai karate dojo. This reignites his old rivalry with the successful Daniel LaRusso, who has been working to maintain the balance in his life without mentor Mr. Miyagi.",
+            "Fight for the soul of the valley.",
+            "https://www.themoviedb.org/t/p/w500/6POBWybSBDBKjSs1VAQcnQC1qyt.jpg",
+            "Netflix, YouTube Premium",
+            4.05F,
             "Action & Adventure, Drama",
-            "2021-11-24",
-            "6",
+            "2018-05-02",
+            "40",
         )
     }
 
