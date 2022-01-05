@@ -10,13 +10,6 @@ import com.kisusyenni.moviecatalog.R
 import com.kisusyenni.moviecatalog.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
-    companion object {
-        @StringRes
-        private val TAB_TITLES = intArrayOf(
-            R.string.movies,
-            R.string.tvShows
-        )
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -32,5 +25,13 @@ class HomeActivity : AppCompatActivity() {
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
         supportActionBar?.elevation = 0f
+    }
+
+    companion object {
+        @StringRes
+        private val TAB_TITLES = intArrayOf(
+            R.string.movies,
+            R.string.tvShows
+        )
     }
 }

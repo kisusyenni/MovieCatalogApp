@@ -12,14 +12,6 @@ import com.kisusyenni.moviecatalog.data.source.remote.response.TvShowDetailRespo
 import com.kisusyenni.moviecatalog.data.source.remote.response.TvShowResultsItem
 
 class MovieCatalogRepository private constructor(private val remoteDataSource: RemoteDataSource) : MovieCatalogDataSource{
-    companion object {
-        @Volatile
-        private var instance: MovieCatalogRepository? = null
-        fun getInstance(remoteData: RemoteDataSource): MovieCatalogRepository =
-            instance ?: synchronized(this) {
-                instance ?: MovieCatalogRepository(remoteData).apply { instance = this }
-            }
-    }
 
     override fun getMovies(): LiveData<List<ListEntity>> {
         val movieResults = MutableLiveData<List<ListEntity>>()
@@ -132,5 +124,14 @@ class MovieCatalogRepository private constructor(private val remoteDataSource: R
         return if(rating != null) {
             (rating/2).toFloat()
         } else 0F
+    }
+
+    companion object {
+        @Volatile
+        private var instance: MovieCatalogRepository? = null
+        fun getInstance(remoteData: RemoteDataSource): MovieCatalogRepository =
+            instance ?: synchronized(this) {
+                instance ?: MovieCatalogRepository(remoteData).apply { instance = this }
+            }
     }
 }

@@ -6,10 +6,6 @@ import com.kisusyenni.moviecatalog.data.source.MovieCatalogRepository
 import com.kisusyenni.moviecatalog.data.source.local.entity.DetailEntity
 
 class DetailViewModel(private val repository: MovieCatalogRepository): ViewModel() {
-    companion object {
-        const val MOVIE = "movie"
-        const val TV_SHOW = "tvShow"
-    }
 
     private lateinit var detailData: LiveData<DetailEntity>
 
@@ -26,4 +22,9 @@ class DetailViewModel(private val repository: MovieCatalogRepository): ViewModel
     }
 
     fun getDetail() = detailData
+
+    companion object {
+        const val MOVIE = "movie"
+        const val TV_SHOW = "tvShow"
+    }
 }
