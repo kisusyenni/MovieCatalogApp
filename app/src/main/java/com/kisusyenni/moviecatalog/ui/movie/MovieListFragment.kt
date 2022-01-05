@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.kisusyenni.moviecatalog.databinding.FragmentMovieListBinding
 import com.kisusyenni.moviecatalog.ui.detail.DetailActivity
 import com.kisusyenni.moviecatalog.viewmodel.ViewModelFactory
+import com.kisusyenni.moviecatalog.vo.Status
 
 class MovieListFragment : Fragment(), MovieListAdapter.OnItemClickCallback {
 
@@ -34,15 +36,27 @@ class MovieListFragment : Fragment(), MovieListAdapter.OnItemClickCallback {
         val progressBar = fragmentMovieListBinding.moviesProgressBar
         progressBar.isVisible = true
         if (activity != null) {
-            val factory = ViewModelFactory.getInstance()
+            val factory = ViewModelFactory.getInstance(requireActivity())
             val viewModel = ViewModelProvider(this, factory)[MovieListViewModel::class.java]
             val movieAdapter = MovieListAdapter()
 
             // observe movieList
             viewModel.getMovies().observe(viewLifecycleOwner, { movies ->
-                progressBar.isVisible = false
-                movieAdapter.setMovies(movies)
-                movieAdapter.setOnItemClickCallback(this)
+                if(movies != null) {
+                    when(movies.status) {
+                        Status.LOADING -> progressBar.isVisible = true
+                        Status.SUCCESS -> {
+                            progressBar.isVisible = false
+                            movieAdapter.submitList(movies.data)
+                            movieAdapter.setOnItemClickCallback(this)
+                        }
+                        Status.ERROR -> {
+                            progressBar.isVisible = false
+                            Toast.makeText(context, "Error occured", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
                 with(fragmentMovieListBinding.rvMovieList) {
                     layoutManager = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
                         GridLayoutManager(context, 4)

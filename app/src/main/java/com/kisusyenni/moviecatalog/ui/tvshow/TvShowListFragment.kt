@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.kisusyenni.moviecatalog.databinding.FragmentTvShowListBinding
 import com.kisusyenni.moviecatalog.ui.detail.DetailActivity
 import com.kisusyenni.moviecatalog.viewmodel.ViewModelFactory
+import com.kisusyenni.moviecatalog.vo.Status
 
 class TvShowListFragment: Fragment(), TvShowListAdapter.OnItemClickCallback {
     private var _fragmentTvShowListBinding: FragmentTvShowListBinding? = null
@@ -27,16 +29,28 @@ class TvShowListFragment: Fragment(), TvShowListAdapter.OnItemClickCallback {
         val progressBar = fragmentTvShowListBinding.tvShowsProgressBar
         progressBar.isVisible = true
         if (activity != null) {
-            val factory = ViewModelFactory.getInstance()
+            val factory = ViewModelFactory.getInstance(requireActivity())
             val viewModel = ViewModelProvider(this, factory)[TvShowListViewModel::class.java]
             val tvShowAdapter = TvShowListAdapter()
 
             // observe tvShowList
             viewModel.getTvShows().observe(viewLifecycleOwner, { tvShows ->
 
-                progressBar.isVisible = false
-                tvShowAdapter.setTvShows(tvShows)
-                tvShowAdapter.setOnItemClickCallback(this)
+                if(tvShows != null) {
+                    when(tvShows.status) {
+                        Status.LOADING -> progressBar.isVisible = true
+                        Status.SUCCESS -> {
+                            progressBar.isVisible = false
+                            tvShowAdapter.submitList(tvShows.data)
+                            tvShowAdapter.setOnItemClickCallback(this)
+                        }
+                        Status.ERROR -> {
+                            progressBar.isVisible = false
+                            Toast.makeText(context, "Error occured", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
                 with(fragmentTvShowListBinding.rvTvShows) {
                     layoutManager = if (resources.configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) {
                         GridLayoutManager(context, 4)
