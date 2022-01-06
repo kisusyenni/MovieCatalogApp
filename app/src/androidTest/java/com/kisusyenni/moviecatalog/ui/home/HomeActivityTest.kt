@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -49,24 +50,14 @@ class HomeActivityTest {
             )
         )
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
-
         onView(withId(R.id.release_year)).check(matches(isDisplayed()))
-
         onView(withId(R.id.duration_episodes)).check(matches(isDisplayed()))
-
         onView(withId(R.id.rb_detail_rating)).check(matches(isDisplayed()))
-
         onView(withId(R.id.genres)).check(matches(isDisplayed()))
-
         onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
-
         onView(withId(R.id.overview_content)).check(matches(isDisplayed()))
-
         onView(withId(R.id.quote)).check(matches(isDisplayed()))
-
         onView(withId(R.id.production_content)).check(matches(isDisplayed()))
-
-
     }
 
     @Test
@@ -79,23 +70,14 @@ class HomeActivityTest {
             )
         )
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
-
         onView(withId(R.id.duration_episodes)).check(matches(isDisplayed()))
-
         onView(withId(R.id.release_year)).check(matches(isDisplayed()))
-
         onView(withId(R.id.rb_detail_rating)).check(matches(isDisplayed()))
-
         onView(withId(R.id.genres)).check(matches(isDisplayed()))
-
         onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
-
         onView(withId(R.id.overview_content)).check(matches(isDisplayed()))
-
         onView(withId(R.id.quote)).check(matches(isDisplayed()))
-
         onView(withId(R.id.production_content)).check(matches(isDisplayed()))
-
     }
 
     @Test
@@ -108,4 +90,95 @@ class HomeActivityTest {
             )
         )
     }
+
+    @Test
+    fun loadFavoriteMovies() {
+        onView(withId(R.id.action_favorite)).perform(click())
+        onView(withId(R.id.rv_fav_movie)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_fav_movie)).perform(
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
+                0
+            )
+        )
+    }
+
+    @Test
+    fun loadDetailFavMovie() {
+        onView(withId(R.id.rv_movie_list)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_movie_list)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
+        onView(withId(R.id.fab)).perform(click())
+        onView(isRoot()).perform(ViewActions.pressBack())
+
+        onView(withId(R.id.action_favorite)).perform(click())
+        onView(withId(R.id.rv_fav_movie)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
+
+        onView(withId(R.id.text_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.release_year)).check(matches(isDisplayed()))
+        onView(withId(R.id.duration_episodes)).check(matches(isDisplayed()))
+        onView(withId(R.id.rb_detail_rating)).check(matches(isDisplayed()))
+        onView(withId(R.id.genres)).check(matches(isDisplayed()))
+        onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
+        onView(withId(R.id.overview_content)).check(matches(isDisplayed()))
+        onView(withId(R.id.quote)).check(matches(isDisplayed()))
+        onView(withId(R.id.production_content)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.fab)).perform(click())
+    }
+
+    @Test
+    fun loadFavoriteTvShows() {
+        onView(withId(R.id.action_favorite)).perform(click())
+        onView(withText("Tv Shows")).perform(click())
+        onView(withId(R.id.rv_fav_tv_shows)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_fav_tv_shows)).perform(
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
+                0
+            )
+        )
+    }
+
+    @Test
+    fun loadDetailFavTvShow() {
+        onView(withText("Tv Shows")).perform(click())
+        onView(withId(R.id.rv_tv_shows)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_tv_shows)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
+        onView(withId(R.id.fab)).perform(click())
+        onView(isRoot()).perform(ViewActions.pressBack())
+
+        onView(withId(R.id.action_favorite)).perform(click())
+        onView(withText("Tv Shows")).perform(click())
+        onView(withId(R.id.rv_fav_tv_shows)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
+
+        onView(withId(R.id.text_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.duration_episodes)).check(matches(isDisplayed()))
+        onView(withId(R.id.release_year)).check(matches(isDisplayed()))
+        onView(withId(R.id.rb_detail_rating)).check(matches(isDisplayed()))
+        onView(withId(R.id.genres)).check(matches(isDisplayed()))
+        onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
+        onView(withId(R.id.overview_content)).check(matches(isDisplayed()))
+        onView(withId(R.id.quote)).check(matches(isDisplayed()))
+        onView(withId(R.id.production_content)).check(matches(isDisplayed()))
+        onView(withId(R.id.fab)).perform(click())
+    }
+
 }
