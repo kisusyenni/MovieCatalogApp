@@ -13,7 +13,8 @@
         android:theme="@style/Theme.MovieCatalog">
         <activity
             android:name=".ui.favorite.FavoriteActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".ui.home.HomeActivity"/>
         <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true"

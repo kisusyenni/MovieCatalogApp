@@ -32,7 +32,6 @@ class FavoriteTvShowFragment : Fragment(), FavoriteTvShowAdapter.OnItemClickCall
         val progressBar = fragmentFavTvShowBinding.favTvShowsProgressBar
         val emptyText = fragmentFavTvShowBinding.tvEmptyFavTvshow
         progressBar.isVisible = true
-        emptyText.isVisible = false
 
         if (activity != null) {
             val factory = ViewModelFactory.getInstance(requireActivity())
@@ -43,11 +42,11 @@ class FavoriteTvShowFragment : Fragment(), FavoriteTvShowAdapter.OnItemClickCall
             viewModel.getFavoriteTvShows().observe(viewLifecycleOwner, { tvShows ->
 
                 progressBar.isVisible = false
-                if (tvShows != null) {
+                if (tvShows != null && tvShows.size > 0) {
                     favTvShowAdapter.submitList(tvShows)
-                } else {
-                    emptyText.isVisible = true
                 }
+
+                emptyText.isVisible = tvShows.size <= 0
 
                 with(fragmentFavTvShowBinding.rvFavTvShows) {
                     layoutManager =

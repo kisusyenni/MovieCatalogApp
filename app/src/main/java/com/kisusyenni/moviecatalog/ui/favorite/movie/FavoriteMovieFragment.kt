@@ -11,8 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kisusyenni.moviecatalog.databinding.FavoriteMovieFragmentBinding
 import com.kisusyenni.moviecatalog.ui.detail.DetailActivity
-import com.kisusyenni.moviecatalog.ui.home.movie.MovieListAdapter
-import com.kisusyenni.moviecatalog.ui.home.movie.MovieListViewModel
 import com.kisusyenni.moviecatalog.viewmodel.ViewModelFactory
 
 class FavoriteMovieFragment : Fragment(), FavoriteMovieAdapter.OnItemClickCallback {
@@ -34,20 +32,19 @@ class FavoriteMovieFragment : Fragment(), FavoriteMovieAdapter.OnItemClickCallba
         val progressBar = fragmentFavMovieBinding.favMoviesProgressBar
         val emptyText = fragmentFavMovieBinding.tvEmptyFavMovie
         progressBar.isVisible = true
-        emptyText.isVisible = false
         if (activity != null) {
             val factory = ViewModelFactory.getInstance(requireActivity())
-            val viewModel = ViewModelProvider(this, factory)[MovieListViewModel::class.java]
-            val movieAdapter = MovieListAdapter()
+            val viewModel = ViewModelProvider(this, factory)[FavoriteMovieViewModel::class.java]
+            val favMovieAdapter = FavoriteMovieAdapter()
 
             // observe movieList
-            viewModel.getMovies().observe(viewLifecycleOwner, { movies ->
+            viewModel.getFavoriteMovies().observe(viewLifecycleOwner, { movies ->
                 progressBar.isVisible = false
                 if (movies != null) {
-                    movieAdapter.submitList(movies.data)
-                } else {
-                    emptyText.isVisible = true
+                    emptyText.isVisible = false
+                    favMovieAdapter.submitList(movies)
                 }
+                emptyText.isVisible = movies.size <= 0
 
                 with(fragmentFavMovieBinding.rvFavMovie) {
                     layoutManager =
@@ -57,7 +54,7 @@ class FavoriteMovieFragment : Fragment(), FavoriteMovieAdapter.OnItemClickCallba
                             GridLayoutManager(context, 3)
                         }
                     setHasFixedSize(true)
-                    adapter = movieAdapter
+                    adapter = favMovieAdapter
                 }
 
             })
