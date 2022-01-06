@@ -70,11 +70,11 @@ class MovieCatalogRepository private constructor(
         return object : NetworkBoundResource<MovieEntity, MovieDetailResponse>(appExecutors) {
             override fun loadFromDB(): LiveData<MovieEntity> = localDataSource.getMovieById(movieId)
 
-            override fun shouldFetch(data: MovieEntity?): Boolean = data != null
+            override fun shouldFetch(data: MovieEntity?): Boolean =
+                data != null && data.tagline == "" && data.productionCompanies == "" && data.runtime == "" && data.genres == ""
 
             override fun createCall(): LiveData<ApiResponse<MovieDetailResponse>> =
                 remoteDataSource.getMovieDetail(movieId.toString())
-
 
             override fun saveCallResult(data: MovieDetailResponse) {
                 val production = data.productionCompanies?.joinToString { it?.name!! }
@@ -160,11 +160,14 @@ class MovieCatalogRepository private constructor(
 
     override fun getDetailTvShow(tvShowId: Int): LiveData<Resource<TvShowEntity>> {
         return object : NetworkBoundResource<TvShowEntity, TvShowDetailResponse>(appExecutors) {
-            override fun loadFromDB(): LiveData<TvShowEntity> = localDataSource.getTvShowById(tvShowId)
+            override fun loadFromDB(): LiveData<TvShowEntity> =
+                localDataSource.getTvShowById(tvShowId)
 
-            override fun shouldFetch(data: TvShowEntity?): Boolean = data != null
+            override fun shouldFetch(data: TvShowEntity?): Boolean =
+                data != null && data.tagline == "" && data.productionCompanies == "" && data.numberOfEpisodes == "" && data.genres == ""
 
-            override fun createCall(): LiveData<ApiResponse<TvShowDetailResponse>> = remoteDataSource.getTvShowDetail(tvShowId.toString())
+            override fun createCall(): LiveData<ApiResponse<TvShowDetailResponse>> =
+                remoteDataSource.getTvShowDetail(tvShowId.toString())
 
             override fun saveCallResult(data: TvShowDetailResponse) {
                 val production = data.networks?.joinToString { it?.name!! }

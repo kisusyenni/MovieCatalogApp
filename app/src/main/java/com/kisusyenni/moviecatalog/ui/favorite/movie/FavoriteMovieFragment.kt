@@ -43,6 +43,7 @@ class FavoriteMovieFragment : Fragment(), FavoriteMovieAdapter.OnItemClickCallba
                 if (movies != null) {
                     emptyText.isVisible = false
                     favMovieAdapter.submitList(movies)
+                    favMovieAdapter.setOnItemClickCallback(this)
                 }
                 emptyText.isVisible = movies.size <= 0
 

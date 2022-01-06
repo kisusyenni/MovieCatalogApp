@@ -44,6 +44,7 @@ class FavoriteTvShowFragment : Fragment(), FavoriteTvShowAdapter.OnItemClickCall
                 progressBar.isVisible = false
                 if (tvShows != null && tvShows.size > 0) {
                     favTvShowAdapter.submitList(tvShows)
+                    favTvShowAdapter.setOnItemClickCallback(this)
                 }
 
                 emptyText.isVisible = tvShows.size <= 0

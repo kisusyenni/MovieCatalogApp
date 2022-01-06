@@ -1,24 +1,27 @@
 package com.kisusyenni.moviecatalog.ui.detail
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.kisusyenni.moviecatalog.R
-import com.kisusyenni.moviecatalog.data.source.local.entity.DetailEntity
 import com.kisusyenni.moviecatalog.data.source.local.entity.MovieEntity
 import com.kisusyenni.moviecatalog.data.source.local.entity.TvShowEntity
 import com.kisusyenni.moviecatalog.databinding.ActivityDetailBinding
 import com.kisusyenni.moviecatalog.viewmodel.ViewModelFactory
 import com.kisusyenni.moviecatalog.vo.Status
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(), View.OnClickListener {
     private var _activityDetailBinding: ActivityDetailBinding? = null
     private val activityDetailBinding get() = _activityDetailBinding!!
 
     private lateinit var categoryDetail: String
+    private lateinit var viewModel: DetailViewModel
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +29,10 @@ class DetailActivity : AppCompatActivity() {
         setContentView(activityDetailBinding.root)
 
         val factory = ViewModelFactory.getInstance(this)
-        val viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
+        viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
 
-        val progressBar = activityDetailBinding.progressBar
+        progressBar = activityDetailBinding.progressBar
+        activityDetailBinding.fab.setOnClickListener(this)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -39,7 +43,7 @@ class DetailActivity : AppCompatActivity() {
             if (id != null && category != null) {
                 categoryDetail = category
                 viewModel.setDetail(id, category)
-
+                setupState()
                 when(category.uppercase()) {
                     "MOVIE"-> {
                         viewModel.getDetailMovie().observe(this, { detail ->
@@ -72,8 +76,6 @@ class DetailActivity : AppCompatActivity() {
                         })
                     }
                 }
-
-
             }
         }
     }
@@ -120,6 +122,69 @@ class DetailActivity : AppCompatActivity() {
         return if(rating != null) {
             (rating/2).toFloat()
         } else 0F
+    }
+
+    private fun onFabClicked() {
+        if (categoryDetail.uppercase() == "MOVIE") {
+            viewModel.setFavoriteMovie()
+        } else if (categoryDetail.uppercase() == "TVSHOW") {
+            viewModel.setFavoriteTvShow()
+        }
+    }
+
+    private fun setFabState(state: Boolean) {
+        val fab = activityDetailBinding.fab
+        if (state) {
+            fab.setImageResource(R.drawable.ic_favorite)
+        } else {
+            fab.setImageResource(R.drawable.ic_favorite_border)
+        }
+    }
+
+    private fun setupState() {
+        if (categoryDetail.uppercase() == "MOVIE") {
+            viewModel.getDetailMovie().observe(this, { movie ->
+                when (movie.status) {
+                    Status.LOADING -> progressBar.isVisible = true
+                    Status.SUCCESS -> {
+                        if (movie.data != null) {
+                            progressBar.isVisible = false
+                            val state = movie.data.isFavorite
+                            setFabState(state)
+                        }
+                    }
+                    Status.ERROR -> {
+                        progressBar.isVisible = false
+                        Toast.makeText(applicationContext, "Error occurred", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+        } else if (categoryDetail == "tvShow") {
+            viewModel.getDetailTvShow().observe(this, { tvShow ->
+                when (tvShow.status) {
+                    Status.LOADING -> progressBar.isVisible = true
+                    Status.SUCCESS -> {
+                        if (tvShow.data != null) {
+                            progressBar.isVisible = false
+                            val state = tvShow.data.isFavorite
+                            setFabState(state)
+                        }
+                    }
+                    Status.ERROR -> {
+                        progressBar.isVisible = false
+                        Toast.makeText(applicationContext, "Error occured", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+        }
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.fab-> {
+                onFabClicked()
+            }
+        }
     }
 
     override fun onDestroy() {
