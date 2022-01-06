@@ -1,4 +1,4 @@
-package com.kisusyenni.moviecatalog.ui.tvshow
+package com.kisusyenni.moviecatalog.ui.home.tvshow
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData

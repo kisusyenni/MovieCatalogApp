@@ -1,4 +1,4 @@
-package com.kisusyenni.moviecatalog.ui.movie
+package com.kisusyenni.moviecatalog.ui.home.movie
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

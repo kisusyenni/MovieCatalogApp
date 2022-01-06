@@ -1,10 +1,9 @@
-package com.kisusyenni.moviecatalog.ui.tvshow
+package com.kisusyenni.moviecatalog.ui.home.tvshow
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import com.kisusyenni.moviecatalog.data.source.MovieCatalogRepository
-import com.kisusyenni.moviecatalog.data.source.local.entity.ListEntity
 import com.kisusyenni.moviecatalog.data.source.local.entity.TvShowEntity
 import com.kisusyenni.moviecatalog.vo.Resource
 

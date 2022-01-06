@@ -8,4 +8,9 @@
     <string name="overview_heading">Overview</string>
     <string name="production_heading">Production</string>
     <string name="detail_image_content_description">Film Poster</string>
+    <string name="action_sort">sort</string>
+    <string name="action_favorite">favorite</string>
+    <string name="favorite_title">My Favorite</string>
+    <string name="empty_favorite_movie_text">There is no favorite movie</string>
+    <string name="empty_favorite_tvshow_text">There is no favorite tv show</string>
 </resources>

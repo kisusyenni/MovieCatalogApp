@@ -1,4 +1,4 @@
-package com.kisusyenni.moviecatalog.ui.movie
+package com.kisusyenni.moviecatalog.ui.home.movie
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,14 +13,6 @@ class MovieListAdapter :
     PagedListAdapter<MovieEntity, MovieListAdapter.MovieViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
-
-//    private var listMovies = ArrayList<MovieEntity>()
-
-//    fun setMovies(movies: List<MovieEntity>?) {
-//        if (movies == null) return
-//        this.listMovies.clear()
-//        this.listMovies.addAll(movies)
-//    }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
@@ -39,8 +31,6 @@ class MovieListAdapter :
             holder.bind(movie)
         }
     }
-
-//    override fun getItemCount(): Int = listMovies.size
 
     inner class MovieViewHolder(private val binding: ItemsMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {

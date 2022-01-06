@@ -1,4 +1,4 @@
-package com.kisusyenni.moviecatalog.ui.home
+package com.kisusyenni.moviecatalog.ui.favorite
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -6,8 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.kisusyenni.moviecatalog.ui.home.movie.MovieListFragment
 import com.kisusyenni.moviecatalog.ui.home.tvshow.TvShowListFragment
 
-class SectionsPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
-
+class FavoritePageAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
     override fun getItemCount(): Int {
         return 2
     }
@@ -20,5 +19,4 @@ class SectionsPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(a
         }
         return fragment as Fragment
     }
-
 }

@@ -1,7 +1,6 @@
-package com.kisusyenni.moviecatalog.ui.movie
+package com.kisusyenni.moviecatalog.ui.home.tvshow
 
 import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,44 +10,39 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.kisusyenni.moviecatalog.databinding.FragmentMovieListBinding
+import com.kisusyenni.moviecatalog.databinding.FragmentTvShowListBinding
 import com.kisusyenni.moviecatalog.ui.detail.DetailActivity
 import com.kisusyenni.moviecatalog.viewmodel.ViewModelFactory
 import com.kisusyenni.moviecatalog.vo.Status
 
-class MovieListFragment : Fragment(), MovieListAdapter.OnItemClickCallback {
+class TvShowListFragment: Fragment(), TvShowListAdapter.OnItemClickCallback {
+    private var _fragmentTvShowListBinding: FragmentTvShowListBinding? = null
+    private val fragmentTvShowListBinding get() = _fragmentTvShowListBinding!!
 
-    private var _fragmentMovieListBinding: FragmentMovieListBinding? = null
-    private val fragmentMovieListBinding get() = _fragmentMovieListBinding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _fragmentMovieListBinding =
-            FragmentMovieListBinding.inflate(layoutInflater, container, false)
-        return fragmentMovieListBinding.root
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _fragmentTvShowListBinding = FragmentTvShowListBinding.inflate(layoutInflater, container, false)
+        return fragmentTvShowListBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val progressBar = fragmentMovieListBinding.moviesProgressBar
+        val progressBar = fragmentTvShowListBinding.tvShowsProgressBar
         progressBar.isVisible = true
         if (activity != null) {
             val factory = ViewModelFactory.getInstance(requireActivity())
-            val viewModel = ViewModelProvider(this, factory)[MovieListViewModel::class.java]
-            val movieAdapter = MovieListAdapter()
+            val viewModel = ViewModelProvider(this, factory)[TvShowListViewModel::class.java]
+            val tvShowAdapter = TvShowListAdapter()
 
-            // observe movieList
-            viewModel.getMovies().observe(viewLifecycleOwner, { movies ->
-                if(movies != null) {
-                    when(movies.status) {
+            // observe tvShowList
+            viewModel.getTvShows().observe(viewLifecycleOwner, { tvShows ->
+
+                if(tvShows != null) {
+                    when(tvShows.status) {
                         Status.LOADING -> progressBar.isVisible = true
                         Status.SUCCESS -> {
                             progressBar.isVisible = false
-                            movieAdapter.submitList(movies.data)
-                            movieAdapter.setOnItemClickCallback(this)
+                            tvShowAdapter.submitList(tvShows.data)
+                            tvShowAdapter.setOnItemClickCallback(this)
                         }
                         Status.ERROR -> {
                             progressBar.isVisible = false
@@ -57,16 +51,15 @@ class MovieListFragment : Fragment(), MovieListAdapter.OnItemClickCallback {
                     }
                 }
 
-                with(fragmentMovieListBinding.rvMovieList) {
-                    layoutManager = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                with(fragmentTvShowListBinding.rvTvShows) {
+                    layoutManager = if (resources.configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) {
                         GridLayoutManager(context, 4)
                     } else {
                         GridLayoutManager(context, 3)
                     }
                     setHasFixedSize(true)
-                    adapter = movieAdapter
+                    adapter = tvShowAdapter
                 }
-
             })
         }
     }
@@ -74,12 +67,12 @@ class MovieListFragment : Fragment(), MovieListAdapter.OnItemClickCallback {
     override fun onItemClicked(id: String) {
         val intent = Intent(context, DetailActivity::class.java)
         intent.putExtra(DetailActivity.EXTRA_ID, id)
-        intent.putExtra(DetailActivity.EXTRA_CATEGORY, "movie")
+        intent.putExtra(DetailActivity.EXTRA_CATEGORY, "tvShow")
         context?.startActivity(intent)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _fragmentMovieListBinding = null
+        _fragmentTvShowListBinding = null
     }
 }

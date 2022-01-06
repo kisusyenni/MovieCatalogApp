@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.kisusyenni.moviecatalog.data.source.MovieCatalogRepository
 import com.kisusyenni.moviecatalog.di.Injection
 import com.kisusyenni.moviecatalog.ui.detail.DetailViewModel
-import com.kisusyenni.moviecatalog.ui.movie.MovieListViewModel
-import com.kisusyenni.moviecatalog.ui.tvshow.TvShowListViewModel
+import com.kisusyenni.moviecatalog.ui.home.movie.MovieListViewModel
+import com.kisusyenni.moviecatalog.ui.home.tvshow.TvShowListViewModel
 
 class ViewModelFactory private constructor(private val movieCatalogRepository: MovieCatalogRepository) :
     ViewModelProvider.NewInstanceFactory() {

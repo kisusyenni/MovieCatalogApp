@@ -1,4 +1,4 @@
-package com.kisusyenni.moviecatalog.ui.tvshow
+package com.kisusyenni.moviecatalog.ui.favorite.tvshow
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,30 +9,22 @@ import com.bumptech.glide.Glide
 import com.kisusyenni.moviecatalog.data.source.local.entity.TvShowEntity
 import com.kisusyenni.moviecatalog.databinding.ItemsMovieBinding
 
-class TvShowListAdapter :
-    PagedListAdapter<TvShowEntity, TvShowListAdapter.TvShowViewHolder>(DIFF_CALLBACK) {
-
-//    private var listTvShows = ArrayList<TvShowEntity>()
+class FavoriteTvShowAdapter :
+    PagedListAdapter<TvShowEntity, FavoriteTvShowAdapter.FavTvShowViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
-
-//    fun setTvShows(tvShows: List<T>?) {
-//        if (tvShows == null) return
-//        this.listTvShows.clear()
-//        this.listTvShows.addAll(tvShows)
-//    }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavTvShowViewHolder {
         val itemsMovieBinding =
             ItemsMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TvShowViewHolder(itemsMovieBinding)
+        return FavTvShowViewHolder(itemsMovieBinding)
     }
 
-    override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavTvShowViewHolder, position: Int) {
         val tvShow = getItem(position)
 
         if (tvShow != null) {
@@ -40,9 +32,7 @@ class TvShowListAdapter :
         }
     }
 
-//    override fun getItemCount(): Int = listTvShows.size
-
-    inner class TvShowViewHolder(private val binding: ItemsMovieBinding) :
+    inner class FavTvShowViewHolder(private val binding: ItemsMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(tvShow: TvShowEntity) {
             with(binding) {
@@ -58,8 +48,8 @@ class TvShowListAdapter :
     }
 
     private fun calcRating(rating: Double?): Float {
-        return if(rating != null) {
-            (rating/2).toFloat()
+        return if (rating != null) {
+            (rating / 2).toFloat()
         } else 0F
     }
 
