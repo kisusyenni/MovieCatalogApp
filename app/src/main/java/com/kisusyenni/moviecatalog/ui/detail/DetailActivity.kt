@@ -159,7 +159,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
                     }
                 }
             })
-        } else if (categoryDetail == "tvShow") {
+        } else if (categoryDetail.uppercase() == "TVSHOW") {
             viewModel.getDetailTvShow().observe(this, { tvShow ->
                 when (tvShow.status) {
                     Status.LOADING -> progressBar.isVisible = true

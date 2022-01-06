@@ -65,7 +65,7 @@ class FavoriteTvShowFragment : Fragment(), FavoriteTvShowAdapter.OnItemClickCall
     override fun onItemClicked(id: String) {
         val intent = Intent(context, DetailActivity::class.java)
         intent.putExtra(DetailActivity.EXTRA_ID, id)
-        intent.putExtra(DetailActivity.EXTRA_CATEGORY, "movie")
+        intent.putExtra(DetailActivity.EXTRA_CATEGORY, "tvShow")
         context?.startActivity(intent)
     }
 
